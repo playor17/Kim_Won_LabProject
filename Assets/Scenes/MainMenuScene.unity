@@ -257,7 +257,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Mulai
+  m_text: PLAY
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0272aa0012f8abf44b1ad097e519a45d, type: 2}
   m_sharedMaterial: {fileID: -8222609102024484762, guid: 0272aa0012f8abf44b1ad097e519a45d, type: 2}
@@ -574,7 +574,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Menang lawan
+  m_text: Defeat
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0272aa0012f8abf44b1ad097e519a45d, type: 2}
   m_sharedMaterial: {fileID: -8222609102024484762, guid: 0272aa0012f8abf44b1ad097e519a45d, type: 2}
@@ -1128,7 +1128,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Kembali
+  m_text: 'Back
 
 '
   m_isRightToLeft: 0
@@ -1534,7 +1534,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Menang lawan
+  m_text: Defeat
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0272aa0012f8abf44b1ad097e519a45d, type: 2}
   m_sharedMaterial: {fileID: -8222609102024484762, guid: 0272aa0012f8abf44b1ad097e519a45d, type: 2}
@@ -1669,9 +1669,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Kembali
-
-'
+  m_text: Back
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0272aa0012f8abf44b1ad097e519a45d, type: 2}
   m_sharedMaterial: {fileID: -8222609102024484762, guid: 0272aa0012f8abf44b1ad097e519a45d, type: 2}
@@ -2210,7 +2208,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pengaturan
+  m_text: Option
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0272aa0012f8abf44b1ad097e519a45d, type: 2}
   m_sharedMaterial: {fileID: -8222609102024484762, guid: 0272aa0012f8abf44b1ad097e519a45d, type: 2}
@@ -5591,7 +5589,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Sepuh
+  m_text: 'Veteran
 
 '
   m_isRightToLeft: 0
@@ -5728,7 +5726,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tombol Arrow atas dan bawah untuk bergerak ke atas, tengah dan bawah
+  m_text: The up and down arrow buttons are used to move up, center, and down.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0272aa0012f8abf44b1ad097e519a45d, type: 2}
   m_sharedMaterial: {fileID: -8222609102024484762, guid: 0272aa0012f8abf44b1ad097e519a45d, type: 2}
@@ -5939,7 +5937,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Menang lawan
+  m_text: Defeat
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0272aa0012f8abf44b1ad097e519a45d, type: 2}
   m_sharedMaterial: {fileID: -8222609102024484762, guid: 0272aa0012f8abf44b1ad097e519a45d, type: 2}
@@ -6428,7 +6426,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tombol "Spacebar" untuk mengganti Senjata
+  m_text: The 'Spacebar' button is used to switch weapons.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0272aa0012f8abf44b1ad097e519a45d, type: 2}
   m_sharedMaterial: {fileID: -8222609102024484762, guid: 0272aa0012f8abf44b1ad097e519a45d, type: 2}
@@ -7524,7 +7522,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tombol "Z" untuk mengganti Senjata
+  m_text: The 'Z' button is used to switch weapons.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0272aa0012f8abf44b1ad097e519a45d, type: 2}
   m_sharedMaterial: {fileID: -8222609102024484762, guid: 0272aa0012f8abf44b1ad097e519a45d, type: 2}
@@ -8111,7 +8109,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Keluar
+  m_text: Quit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0272aa0012f8abf44b1ad097e519a45d, type: 2}
   m_sharedMaterial: {fileID: -8222609102024484762, guid: 0272aa0012f8abf44b1ad097e519a45d, type: 2}
@@ -9146,7 +9144,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tombol
+  m_text: Button
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0272aa0012f8abf44b1ad097e519a45d, type: 2}
   m_sharedMaterial: {fileID: -8222609102024484762, guid: 0272aa0012f8abf44b1ad097e519a45d, type: 2}

@@ -67,9 +67,9 @@ public class PlayerController : MonoBehaviour
         {
             string weaponName = currentProjectileType switch
             {
-                0 => "Bubble Biru",
-                1 => "Bubble Hijau",
-                2 => "Bubble Merah",
+                0 => "Blue Bubble",
+                1 => "Green Bubble",
+                2 => "Red Bubble",
                 _ => "Unknown"
             };
             weaponText.text = $"Current Weapon: {weaponName}";
