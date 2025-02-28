@@ -8,10 +8,10 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
-        // Bergerak ke kanan
+        // Move to the right
         transform.Translate(Vector2.right * speed * Time.deltaTime);
 
-        // Destroy jika keluar screen
+        // Destroy if exit screen
         if (transform.position.x > 15f)
             Destroy(gameObject);
     }
@@ -30,26 +30,57 @@ public class Projectile : MonoBehaviour
 
     void CheckDamage(Enemy enemy)
     {
-        bool canDamage = false;
+        if (enemy.type == Enemy.EnemyType.Boss)
+        {
+            HandleBossHit(enemy);
+        }
+        else
+        {
+            bool canDamage = false;
+            switch (type)
+            {
+                case ProjectileType.Rock:
+                    canDamage = enemy.type == Enemy.EnemyType.Scissors;
+                    break;
+                case ProjectileType.Paper:
+                    canDamage = enemy.type == Enemy.EnemyType.Rock;
+                    break;
+                case ProjectileType.Scissors:
+                    canDamage = enemy.type == Enemy.EnemyType.Paper;
+                    break;
+            }
 
-        // Rock Paper Scissors Logic
+            if (canDamage)
+            {
+                enemy.TakeDamage();
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    void HandleBossHit(Enemy enemy)
+    {
         switch (type)
         {
             case ProjectileType.Rock:
-                canDamage = enemy.type == Enemy.EnemyType.Scissors;
+                enemy.hitByRock = true;
                 break;
             case ProjectileType.Paper:
-                canDamage = enemy.type == Enemy.EnemyType.Rock;
+                enemy.hitByPaper = true;
                 break;
             case ProjectileType.Scissors:
-                canDamage = enemy.type == Enemy.EnemyType.Paper;
+                enemy.hitByScissors = true;
                 break;
         }
 
-        if (canDamage)
+        // Hit all 3, destroy the boss
+        if (enemy.hitByRock && enemy.hitByPaper && enemy.hitByScissors)
         {
             enemy.TakeDamage();
-            Destroy(gameObject);
         }
+
+        // Projectiles are always destroyed
+        Destroy(gameObject);
     }
+
 }

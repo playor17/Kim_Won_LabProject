@@ -2,15 +2,21 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public enum EnemyType { Rock, Paper, Scissors }
+    public enum EnemyType { Rock, Paper, Scissors, Boss }
     public EnemyType type;
     public float speed;
     private SpriteRenderer spriteRenderer;
+
+    // Boss hit tracker
+    public bool hitByRock = false;
+    public bool hitByPaper = false;
+    public bool hitByScissors = false;
 
     [Header("Sprites")]
     [SerializeField] private Sprite rockSprite;
     [SerializeField] private Sprite paperSprite;
     [SerializeField] private Sprite scissorsSprite;
+    [SerializeField] private Sprite bossSprite;
 
     void Awake()
     {
@@ -20,20 +26,22 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        // Gerak ke kiri
+        // Move to the left
         transform.Translate(Vector2.left * speed * Time.deltaTime);
 
-        // Destroy jika keluar screen
+        // Destroy if exit screen
         if (transform.position.x < -10f)
             Destroy(gameObject);
     }
 
     void Start()
     {
-        // Set random type
-        type = (EnemyType)Random.Range(0, 3);
-        UpdateSprite();
+        if (type == EnemyType.Rock || type == EnemyType.Paper || type == EnemyType.Scissors)
+        {
+            UpdateSprite();
+        }
     }
+
 
     public void SetEnemyType(EnemyType newType)
     {
@@ -48,7 +56,7 @@ public class Enemy : MonoBehaviour
 
     void UpdateSprite()
     {
-        // Set warna berdasarkan type
+        // Set color by type
         switch (type)
         {
             case EnemyType.Rock:
@@ -60,12 +68,15 @@ public class Enemy : MonoBehaviour
             case EnemyType.Scissors:
                 spriteRenderer.sprite = scissorsSprite;
                 break;
+            case EnemyType.Boss:
+                spriteRenderer.sprite = bossSprite;
+                break;
         }
     }
 
     public void TakeDamage()
     {
-        // ditambahkan score system
+        // added score system
         if (GameManager.Instance != null)
         {
             GameManager.Instance.EnemyDefeated(type);
@@ -74,7 +85,7 @@ public class Enemy : MonoBehaviour
         {
             Debug.LogWarning("GameManager instance not found!");
         }
-        //hancurkan enemy obyek
+        //destroy enemy objects
         Destroy(gameObject);
     }
 }

@@ -38,10 +38,20 @@ public class PlayerController : MonoBehaviour
             lastShootTime = Time.time;
         }
 
-        // Switch projectile type
-        if (Input.GetKeyDown(KeyCode.Z))
+        // Switch projectile type directly by key
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            currentProjectileType = (currentProjectileType + 1) % 3;
+            currentProjectileType = 0;   // weapon 1
+            UpdateProjectileIndicator();
+        }
+        else if (Input.GetKeyDown(KeyCode.W))
+        {
+            currentProjectileType = 1;   // weapon 2
+            UpdateProjectileIndicator();
+        }
+        else if (Input.GetKeyDown(KeyCode.E))
+        {
+            currentProjectileType = 2;   // weapon 3
             UpdateProjectileIndicator();
         }
     }
@@ -61,7 +71,7 @@ public class PlayerController : MonoBehaviour
 
     void UpdateProjectileIndicator()
     {
-        // Akan diimplementasikan dengan UI nanti
+        // Will be implemented with UI later
         Debug.Log($"Current weapon: {(Projectile.ProjectileType)currentProjectileType}");
         if (weaponText != null)
         {
@@ -80,14 +90,13 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            // Kurangi nyawa player
+            // Reduce player's life
             if (GameManager.Instance != null)
             {
                 //debug health
                 Debug.Log("Player hit by enemy!");
-                //blablabla
                 GameManager.Instance.TakeDamage();
-                // Hancurkan enemy yang menabrak
+                // Destroy the enemy that crashes
                 Destroy(other.gameObject);
             }
         }

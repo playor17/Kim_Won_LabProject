@@ -8,7 +8,7 @@ public class MainMenuManager : MonoBehaviour
     public GameObject creditPanel;
     public GameObject optionsPanel;
     public GameObject tutorialPanel;
-    public GameObject levelSelectPanel; // Panel untuk pemilihan level
+    public GameObject levelSelectPanel;
 
     [Header("Audio Settings")]
     public AudioSource backgroundMusic;
@@ -18,45 +18,39 @@ public class MainMenuManager : MonoBehaviour
         ShowMainMenu();
     }
 
-    // Fungsi untuk tombol Play
     public void PlayGame()
     {
         mainMenuPanel.SetActive(false);
         levelSelectPanel.SetActive(true);
     }
 
-    // Fungsi untuk memuat level spesifik
-    public void LoadLevel(string levelName)
+    public void StartLevel1() { StartLevel(1, "Level1"); }
+    public void StartLevel2() { StartLevel(2, "Level2"); }
+    public void StartLevel3() { StartLevel(3, "Level3"); }
+    public void StartVeteran() { StartLevel(4, "Veteran"); }
+
+    void StartLevel(int level, string sceneName)
     {
-        SceneManager.LoadScene(levelName);
+        PlayerPrefs.SetInt("SelectedLevel", level);  // PlayerPrefs에 저장
+        PlayerPrefs.Save();                          // 저장 즉시 반영
+        Debug.Log($"[MainMenuManager] Trying to load {sceneName} for Level {level}");
+        SceneManager.LoadScene(sceneName);           // 씬 로드
     }
 
-    public void ShowCredit()
-    {
-        mainMenuPanel.SetActive(false);
-        creditPanel.SetActive(true);
-    }
 
-    public void ShowOptions()
-    {
-        mainMenuPanel.SetActive(false);
-        optionsPanel.SetActive(true);
-    }
+    public void ShowCredit() { SwitchPanel(creditPanel); }
+    public void ShowOptions() { SwitchPanel(optionsPanel); }
+    public void ShowTutorial() { SwitchPanel(tutorialPanel); }
+    public void ShowMainMenu() { SwitchPanel(mainMenuPanel); }
 
-    public void ShowTutorial()
-    {
-        mainMenuPanel.SetActive(false);
-        tutorialPanel.SetActive(true);
-    }
-
-    public void ShowMainMenu()
+    void SwitchPanel(GameObject panel)
     {
         mainMenuPanel.SetActive(false);
         creditPanel.SetActive(false);
         optionsPanel.SetActive(false);
         tutorialPanel.SetActive(false);
         levelSelectPanel.SetActive(false);
-        mainMenuPanel.SetActive(true);
+        panel.SetActive(true);
     }
 
     public void QuitGame()
@@ -64,7 +58,7 @@ public class MainMenuManager : MonoBehaviour
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
-            Application.Quit();
+        Application.Quit();
 #endif
     }
 }

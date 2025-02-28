@@ -4,47 +4,85 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
+
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI weaponText;
     public TextMeshProUGUI comboText;
+    public TextMeshProUGUI healthText;
+    public TextMeshProUGUI remainingEnemiesText;
+
     public GameObject gameOverPanel;
+    public GameObject pausePanel;
 
     void Awake()
     {
         Instance = this;
-        gameOverPanel.SetActive(false);
+
+        if (gameOverPanel != null)
+            gameOverPanel.SetActive(false);
+
+        if (pausePanel != null)
+            pausePanel.SetActive(false);
     }
 
     public void UpdateScore(int score)
     {
-        scoreText.text = $"Score: {score:N0}";
+        if (scoreText != null)
+            scoreText.text = $"Score: {score:N0}";
     }
 
     public void UpdateWeaponText(string weaponName)
     {
-        weaponText.text = $"Current Bubble: {weaponName}";
+        if (weaponText != null)
+            weaponText.text = $"Current Bubble: {weaponName}";
     }
 
     public void UpdateCombo(int multiplier)
     {
-        if (multiplier > 1)
+        if (comboText != null)
         {
-            comboText.gameObject.SetActive(true);
-            comboText.text = $"Combo x{multiplier}!";
+            if (multiplier > 1)
+            {
+                comboText.gameObject.SetActive(true);
+                comboText.text = $"Combo x{multiplier}!";
+            }
+            else
+            {
+                comboText.gameObject.SetActive(false);
+            }
         }
-        else
-        {
-            comboText.gameObject.SetActive(false);
-        }
+    }
+
+    public void UpdateHealth(int health)
+    {
+        if (healthText != null)
+            healthText.text = $"X {health}";
+    }
+
+    public void UpdateRemainingEnemies(int remaining)
+    {
+        if (remainingEnemiesText != null)
+            remainingEnemiesText.text = $"Remaining: {remaining} enemies";
     }
 
     public void ShowGameOver(int finalScore)
     {
-        gameOverPanel.SetActive(true);
-        TextMeshProUGUI finalScoreText = gameOverPanel.GetComponentInChildren<TextMeshProUGUI>();
-        if (finalScoreText != null)
+        if (gameOverPanel != null)
         {
-            finalScoreText.text = $"Final Score: {finalScore:N0}";
+            gameOverPanel.SetActive(true);
+            TextMeshProUGUI finalScoreText = gameOverPanel.GetComponentInChildren<TextMeshProUGUI>();
+            if (finalScoreText != null)
+            {
+                finalScoreText.text = $"Final Score: {finalScore:N0}";
+            }
+        }
+    }
+
+    public void ShowPause(bool show)
+    {
+        if (pausePanel != null)
+        {
+            pausePanel.SetActive(show);
         }
     }
 }

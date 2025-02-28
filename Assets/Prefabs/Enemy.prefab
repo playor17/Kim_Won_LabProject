@@ -126,6 +126,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   speed: 3
+  hitByRock: 0
+  hitByPaper: 0
+  hitByScissors: 0
   rockSprite: {fileID: 21300000, guid: 37d26b77ae765ac4a95ff233937bbd62, type: 3}
   paperSprite: {fileID: 21300000, guid: 277018e1538a5564bb2dd603e567815e, type: 3}
   scissorsSprite: {fileID: 21300000, guid: d7201ac86adf4c748a6d4f070ac80882, type: 3}
+  bossSprite: {fileID: 21300000, guid: 163ab4d157fb2424bb8bb6132470e6e1, type: 3}

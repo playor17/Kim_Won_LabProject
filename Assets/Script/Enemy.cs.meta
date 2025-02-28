@@ -3,7 +3,11 @@ guid: 0289ea7b228315947a61310fc81a2da6
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - rockSprite: {instanceID: 0}
+  - paperSprite: {instanceID: 0}
+  - scissorsSprite: {instanceID: 0}
+  - bossSprite: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

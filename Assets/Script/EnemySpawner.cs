@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -45,12 +44,14 @@ public class EnemySpawner : MonoBehaviour
 
     void InitializeSpawner()
     {
-        // Get the initial settings from GameManager if available
         if (GameManager.Instance != null)
         {
             spawnInterval = GameManager.Instance.baseSpawnInterval;
             enemySpeed = GameManager.Instance.baseEnemySpeed;
+
+            Debug.Log($"[EnemySpawner] Initialized for Level {GameManager.Instance.currentLevel}");
         }
+
         nextSpawnTime = Time.time + spawnInterval;
         isSpawningEnabled = true;
         isLevelCompleted = false;
@@ -58,13 +59,10 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        if (ShouldSpawn())
+        if (ShouldSpawn() && Time.time >= nextSpawnTime)
         {
-            if (Time.time >= nextSpawnTime)
-            {
-                SpawnEnemy();
-                nextSpawnTime = Time.time + spawnInterval;
-            }
+            SpawnEnemy();
+            nextSpawnTime = Time.time + spawnInterval;
         }
     }
 
@@ -82,17 +80,36 @@ public class EnemySpawner : MonoBehaviour
     {
         if (GameManager.Instance == null) return;
 
-        // Pilih lane random
         int randomLane = Random.Range(0, laneYPositions.Length);
         Vector3 spawnPosition = new Vector3(transform.position.x, laneYPositions[randomLane], 0f);
 
-        // Spawn enemy
         GameObject enemyObj = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
         Enemy enemy = enemyObj.GetComponent<Enemy>();
 
-        // Set enemy speed untuk level ini
         enemy.SetSpeed(enemySpeed);
+
+        int currentLevel = GameManager.Instance.currentLevel;
+
+        if (currentLevel == 4)  // Level 4 (Veteran)
+        {
+            if (Random.value < 0.2f)
+            {
+                enemy.SetEnemyType(Enemy.EnemyType.Boss);
+                Debug.Log("[EnemySpawner] Spawned BOSS in Veteran Level");
+            }
+            else
+            {
+                enemy.SetEnemyType((Enemy.EnemyType)Random.Range(0, 3));
+                Debug.Log("[EnemySpawner] Spawned Regular Enemy in Veteran Level");
+            }
+        }
+        else
+        {
+            enemy.SetEnemyType((Enemy.EnemyType)Random.Range(0, 3));
+            Debug.Log($"[EnemySpawner] Spawned Regular Enemy in Level {currentLevel}");
+        }
     }
+
 
     public void UpdateSpawnSettings(float newInterval, float newSpeed)
     {
